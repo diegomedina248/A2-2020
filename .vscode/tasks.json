@@ -1,0 +1,48 @@
+{
+  "version": "2.0.0",
+  "presentation": {
+    "echo": false,
+    "reveal": "always",
+    "focus": false,
+    "panel": "shared",
+    "showReuseMessage": false,
+    "clear": false
+  },
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "Create build directory",
+      "command": "rm -rf build && mkdir -p build",
+      "args": []
+    },
+    {
+      "type": "shell",
+      "label": "Build",
+      "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++",
+      "args": [
+        "-I",
+        "${workspaceFolder}",
+        "-g",
+        "${workspaceFolder}/src/*.cpp",
+        "-o",
+        "${workspaceFolder}/build/program"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "dependsOn": "Create build directory",
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "type": "shell",
+      "label": "Run",
+      "command": "cd ${workspaceFolder} && ./build/program",
+      "dependsOn": "Build",
+      "args": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
