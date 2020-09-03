@@ -17,6 +17,11 @@ class AVL {
     void remove(int data) {
       remove(root, data);
     }
+
+    bool contains(int data) {
+      // recorrer avl y buscar el dato
+      return false;
+    }
   
   private:
     struct Node {
@@ -47,10 +52,23 @@ class AVL {
       if (!node) return;
 
       if (height(node->left) - height(node->right) > 1) {
-        // rotar derecha
-        rightRotation(node);
+        if (height(node->left->left) >= height(node->left->right)) {
+          // rotar derecha
+          rightRotation(node);
+        } else {
+          // doble rotacion izq-der
+          leftRotation(node->left);
+          rightRotation(node);
+        }
       } else if (height(node->right) - height(node->left) > 1) {
-        // rotar izq
+        if (height(node->right->right) >= height(node->right->left)) {
+          // rotar izq
+          leftRotation(node);
+        } else {
+          // doble rotacion der-izq
+          rightRotation(node->right);
+          leftRotation(node);
+        }
       }
 
       updateHeight(node);
@@ -60,6 +78,17 @@ class AVL {
       Node* aux = node->left;
       node->left = aux->right;
       aux->right = node;
+
+      updateHeight(node);
+      updateHeight(aux);
+
+      node = aux;
+    }
+
+    void leftRotation(Node* &node) {
+      Node* aux = node->right;
+      node->right = aux->left;
+      aux->left = node;
 
       updateHeight(node);
       updateHeight(aux);
@@ -91,6 +120,8 @@ class AVL {
         node = node->left ? node->left : node->right;
         delete toRemove;
       }
+
+      balance(node);
     };
 
     Node* findMin(Node* &node) {
