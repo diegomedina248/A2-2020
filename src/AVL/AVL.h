@@ -22,7 +22,11 @@ class AVL {
       // recorrer avl y buscar el dato
       return false;
     }
-  
+
+    // PRE: AVL is not empty
+    int min() {
+      return findMin(root)->data;
+    }
   private:
     struct Node {
       int data;
