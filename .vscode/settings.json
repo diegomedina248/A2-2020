@@ -1,6 +1,7 @@
 {
   "files.associations": {
     "algorithm": "cpp",
-    "__node_handle": "cpp"
+    "__node_handle": "cpp",
+    "iosfwd": "cpp"
   }
 }
