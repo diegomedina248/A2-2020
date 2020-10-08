@@ -55,6 +55,19 @@ class Graph {
       return verticesVec;
     }
 
+    bool hasEdge(V from, V to) {
+      Node* node = getVertexNode(from);
+      EdgeListNode *edgeNode = node->list;
+
+      while (edgeNode != NULL) {
+        if (edgeNode->toVertex == to)
+          return true;
+        edgeNode = edgeNode->nextEdge;
+      }
+
+      return false;
+    }
+
     // PRE: edge between from and to exists in graph
     W getEdge(V from, V to) {
       Node* node = getVertexNode(from);

@@ -23,6 +23,10 @@ class GenericHeap {
       percolateUp(hole);
     }
 
+    bool isEmpty() {
+      return false;
+    }
+
     // PRE: heap is not empty
     void deleteMin() {
       unsigned int hole = 1;
