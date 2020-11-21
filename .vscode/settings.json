@@ -2,5 +2,6 @@
   "files.associations": {
     "algorithm": "cpp",
     "__node_handle": "cpp",
+    "ostream": "cpp"
   }
 }
