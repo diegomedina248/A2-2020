@@ -5,9 +5,12 @@ using namespace std;
 #include "greedy.cpp"
 #include "dynamicProgramming.cpp"
 #include "backtracking.cpp"
+#include "segundoParcial.cpp"
 
 int main() {
-  cout << "START" << endl << endl;
+  cout << "========================" << endl << "START SEGUNDO PARCIAL" << endl << "========================" << endl << endl;
+  testSegundoParcial();
+  cout << endl << "========================" << endl << "END SEGUNDO PARCIAL" << endl << "========================" << endl << endl;
 
   cout << "========================" << endl << "START D&C" << endl << "========================" << endl << endl;
   testDivideAndConquer();
